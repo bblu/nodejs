@@ -5,7 +5,7 @@ var htutil  = require('./htutil');
 
 var server = http.createServer(
     function(req, res){
-        htutil.loadParams(req, res, undefinde);
+        htutil.loadParams(req, res, undefinde=null);
         if(req.requrl.pathname==='/'){
             require('./home-node').get(req, res);
         }else if(req.requrl.pathname  === '/square'){
