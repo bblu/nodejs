@@ -9,5 +9,6 @@ var server = net.createServer(function(socket){
 	});
 });
 
+console.log('server.listen(8000);');
 server.listen(8000);
 
