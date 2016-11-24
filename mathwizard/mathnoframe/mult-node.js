@@ -9,7 +9,7 @@ exports.get = function(req, res){
     res.end(
         htutil.page("Multipplication", htutil.navbar(),
             [(!isNaN(req.a) && !isNaN(req.b) ?
-                ("<p class='result'{a} * {b} = {result}</p>"
+                ("<p class='result'>{a} * {b} = {result}</p>"
                     .replace("{a}", req.a)
                     .replace("{b}", req.b)
                     .replace("{result}", result)):""),
