@@ -1,0 +1,1 @@
+var promise = fs_readFile('myfile.txt')
