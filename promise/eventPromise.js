@@ -39,6 +39,24 @@ Deferred.prototype.progress = function(dat){
 	this.promise.emit('progress',dat);
 };
 
+Deferred.prototype.all = function (promise){
+	var count = promise.length;
+	var that =  this;
+	var result=[];
+	promise.forEach(function (promise, i){
+		promise.then(function (data){
+			count--;
+			result[i]=data;
+			if(count == 0){
+				that.resolve(result);
+			}
+		},function(err){
+			that.reject(err);
+		});
+	});
+	return this.promise;
+};
+
 var promisify = function(res){
 	var deferred = new Deferred();
 	var result = '';

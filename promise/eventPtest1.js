@@ -8,7 +8,7 @@ res.on('end', function(){
 	//Done
 });
 
-res.on('error',function(){
+res.on('error',function(err){
 	//Error
 });
 

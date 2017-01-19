@@ -1,1 +1,1 @@
-var promise = fs_readFile('myfile.txt')
+myfile contex = fs_readFile('myfile.txt')
