@@ -1,1 +1,1 @@
-myfile contex = fs_readFile('myfile.txt')
+myfile contex = 'cdef'
