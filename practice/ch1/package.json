@@ -1,0 +1,22 @@
+{
+  "name": "countstream",
+  "version": "1.0.0",
+  "description": "typed by bblu from node.js in practice",
+  "main": "countstream.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bblu/nodejs.git"
+  },
+  "keywords": [
+    "stream"
+  ],
+  "author": "bblu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bblu/nodejs/issues"
+  },
+  "homepage": "https://github.com/bblu/nodejs#readme"
+}
