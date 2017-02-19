@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    .container
+        .row
+            table.table.table-hover.table-bordered
+                thead
+                    tr
+                        th name
+                        th doctor
+                        th country
+                        th year
+                        th view
+                        th update
+                        th delte
+                    tbody
+                        each item in movies
+                        tr(class="item-id-#{item._id}")
+                            td #{item.title}
+                            td #{item.title}
+                            td #{item.title}
+                            td #{item.title}
+                            td #{item.title}
