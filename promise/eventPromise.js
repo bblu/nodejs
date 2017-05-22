@@ -79,9 +79,9 @@ var promisify = function(res){
 };
 
 promisify(res).then(function(){
-	//Done
+    console.log('Done');
 }, function(err){
-	//Error
+	console.log('Error');
 },function(chunk){
 	console.log('BODY:' + chunk);
 });
