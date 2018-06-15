@@ -55,13 +55,24 @@ function co(gen){
                 return reject(e);
             }
             next(ret);
+        };
+        //关键的next函数反复调用自身
+        function next(ret){
+            if(ret.done) return resolve(ret.value);
+            var value = toPromise.call(ctx,ret.value);
+            if(value && isPromise(value)){
+                return value.then(onFulfilled,onRefected);
+            }
+            return onRejected(
+                new TypeError(
+                    'You may only yield a function, promise generator, array, or object,' +
+                    'bu the following object was passed:"' +
+                    String(ret.value)+'"'
+                )
+            );
         }
     });
 }
-//关键的next函数反复调用自身
-function next(ret){
-    if(ret.done) return resolve(ret.value);
-    var value = toPromise.call(ctx,ret.value);
-}
 
-//ch17.5.5.并发异步操作 co
+
+4001507507
