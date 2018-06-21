@@ -9,7 +9,7 @@ const router = new Router();
 
 router.get('/auth/register', async (ctx) => {
   ctx.type = 'html';
-  ctx.body = fs.createReadStream('./src/server/views/register.html');
+  ctx.body = fs.createReadStream(__dirname + '/../../views/register.html');
 });
 
 router.post('/auth/register', async (ctx) => {
@@ -28,7 +28,7 @@ router.post('/auth/register', async (ctx) => {
 router.get('/auth/login', async (ctx) => {
   if (!helpers.ensureAuthenticated(ctx)) {
     ctx.type = 'html';
-    ctx.body = fs.createReadStream('./src/server/views/login.html');
+    ctx.body = fs.createReadStream(__dirname + '/../../views/login.html');
   } else {
     ctx.redirect('/auth/status');
   }
@@ -59,7 +59,7 @@ router.get('/auth/logout', async (ctx) => {
 router.get('/auth/status', async (ctx) => {
   if (helpers.ensureAuthenticated(ctx)) {
     ctx.type = 'html';
-    ctx.body = fs.createReadStream('./src/server/views/status.html');
+    ctx.body = fs.createReadStream(__dirname + '/../../views/status.html');
   } else {
     ctx.redirect('/auth/login');
   }
@@ -68,7 +68,7 @@ router.get('/auth/status', async (ctx) => {
 router.get('/auth/admin', async (ctx) => {
   if (await helpers.ensureAdmin(ctx)) {
     ctx.type = 'html';
-    ctx.body = fs.createReadStream('./src/server/views/admin.html');
+    ctx.body = fs.createReadStream(__dirname + '/../../views/admin.html');
   } else {
     ctx.redirect('/auth/login');
   }
