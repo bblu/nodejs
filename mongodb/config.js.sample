@@ -1,0 +1,4 @@
+model.exports = {
+    name:'yourName',
+    pswd:''
+}

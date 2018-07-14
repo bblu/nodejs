@@ -42,8 +42,8 @@ describe('routes : auth', () => {
       chai.request(server)
       .post('/auth/register')
       .send({
-        username: 'michael',
-        password: 'herman'
+        name: 'michael',
+        pswd: 'herman'
       })
       .end((err, res) => {
         res.redirects[0].should.contain('/auth/status');
@@ -74,8 +74,8 @@ describe('routes : auth', () => {
       chai.request(server)
       .post('/auth/login')
       .send({
-        username: 'jeremy',
-        password: 'johnson'
+        name: 'jeremy',
+        pswd: 'johnson'
       })
       .end((err, res) => {
         res.redirects[0].should.contain('/auth/status');

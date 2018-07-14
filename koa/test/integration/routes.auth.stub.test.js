@@ -58,8 +58,8 @@ describe('routes : auth - stubbed', () => {
       const user = [
         {
           id: 1,
-          username: 'michael',
-          password: 'something'
+          name: 'michael',
+          pswd: 'something'
         }
       ];
       this.query = sinon.stub(queries, 'addUser').resolves(user);
@@ -74,8 +74,8 @@ describe('routes : auth - stubbed', () => {
       chai.request(server)
       .post('/auth/register')
       .send({
-        username: 'michael',
-        password: 'herman'
+        name: 'michael',
+        pswd: 'herman'
       })
       .end((err, res) => {
         res.redirects[0].should.contain('/auth/status');
@@ -133,8 +133,8 @@ describe('routes : auth - stubbed', () => {
       chai.request(server)
       .post('/auth/login')
       .send({
-        username: 'jeremy',
-        password: 'johnson'
+        name: 'jeremy',
+        pswd: 'johnson'
       })
       .end((err, res) => {
         res.redirects[0].should.contain('/auth/status');
@@ -151,8 +151,8 @@ describe('routes : auth - stubbed', () => {
       chai.request(server)
       .post('/auth/login')
       .send({
-        username: 'jeremy',
-        password: 'notcorrect'
+        name: 'jeremy',
+        pswd: 'notcorrect'
       })
       .end((err, res) => {
         should.exist(err);

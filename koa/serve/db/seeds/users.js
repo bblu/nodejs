@@ -7,8 +7,8 @@ exports.seed = (knex, Promise) => {
     const hash = bcrypt.hashSync('johnson', salt);
     return Promise.join(
       knex('users').insert({
-        username: 'jeremy',
-        password: hash,
+        name: 'jeremy',
+        pswd: hash,
         admin: false
       })
     );
@@ -18,8 +18,8 @@ exports.seed = (knex, Promise) => {
     const hash = bcrypt.hashSync('88776655443322', salt);
     return Promise.join(
       knex('users').insert({
-        username: 'hank',
-        password: hash,
+        name: 'hank',
+        pswd: hash,
         admin: true
       })
     );
