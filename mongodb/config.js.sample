@@ -1,4 +1,5 @@
-model.exports = {
-    name:'yourName',
-    pswd:''
+module.exports = {
+    dbUri:'yourdbLocation',
+    name:'databaseName',
+    pswd:'userPassword'
 }
