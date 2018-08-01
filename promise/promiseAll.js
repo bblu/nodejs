@@ -71,3 +71,67 @@ Promise.all [ { r1: 1, r2: 2 }, { r1: 1, r2: 2 } ]
 object ret= { r1: 1, r2: 2 }
 Promise.err two was rejected
 */
+
+function Connection(base){
+    this.base = base;
+    this.collections = {};
+}
+
+Object.defineProperty(Connection.prototype, 'host', {
+    configurable: true,
+    enumerable: true,
+    writable: true
+  });
+
+Object.defineProperty(Connection.prototype, 'readyState', {
+    get: function() {
+      return this._readyState;
+    },
+    set: function(val) {
+      if (!(val in STATES)) {
+        throw new Error('Invalid connection state: ' + val);
+      }
+  
+      if (this._readyState !== val) {
+        this._readyState = val;
+        }
+    }
+});
+
+Connection.prototype.openUri = function(uri, options, callback) {
+    const _this = this;
+    const promise = new Promise((resolve, reject) => {
+        console.log('openUri.promise');
+        resolve(_this);
+    });
+    this.$initialConnection = Promise.all([promise, pr2]).
+    then(res => res[0]).
+    catch(err => {
+      if (this.listeners('error').length > 0) {
+        process.nextTick(() => this.emit('error', err));
+        return;
+      }
+      throw err;
+    });
+    this.then = function(resolve, reject) {
+        console.log('Connection.then');
+        return this.$initialConnection.then(resolve, reject);
+    };
+    this.catch = function(reject) {
+        console.log('Connection.catch');
+        return this.$initialConnection.catch(reject);
+    };
+    
+    if (callback != null) {
+        this.$initialConnection.then(
+          () => callback(null, this),
+          err => callback(err)
+        );
+    }
+    return this;
+}
+
+var conn = new Connection('mongo');
+conn.openUri('uri').then((cnn)=>{
+     return console.log(cnn);
+});
